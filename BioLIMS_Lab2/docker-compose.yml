@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  # 1. Service Discovery (Реестр сервисов Consul)
+  # 1. Service Discovery (Реєстр сервісів Consul)
   consul:
     image: hashicorp/consul:1.15
     container_name: biolims-consul
@@ -11,7 +11,7 @@ services:
     networks:
       - biolims-net
 
-  # 2. Message Broker (Брокер сообщений RabbitMQ с веб-панелью)
+  # 2. Message Broker (Брокер повідомлень RabbitMQ з веб-панеллю)
   rabbitmq:
     image: rabbitmq:3-management-alpine
     container_name: biolims-rabbitmq
@@ -21,7 +21,7 @@ services:
     networks:
       - biolims-net
 
-  # 3. Контекст регистрации и отбора биоматериала (Intake Context)
+  # 3. Контекст реєстрації та відбору біоматеріалу (Intake Context)
   order-sample-service:
     build: ./order-sample-service
     restart: always
@@ -38,7 +38,7 @@ services:
     networks:
       - biolims-net
 
-  # 4. Контекст лабораторного тестирования (Assay Execution Context)
+  # 4. Контекст лабораторного тестування (Assay Execution Context)
   assay-execution-service:
     build: ./assay-execution-service
     restart: always
@@ -57,7 +57,7 @@ services:
     networks:
       - biolims-net
 
-  # 5. Контекст клинической валидации и отчётности (Validation & Report Context)
+  # 5. Контекст клінічної валідації та звітності (Validation & Report Context)
   validation-report-service:
     build: ./validation-report-service
     restart: always
@@ -74,7 +74,7 @@ services:
     networks:
       - biolims-net
 
-  # 6. Edge / API Gateway (Единая точка входа и балансировщик нагрузки)
+  # 6. Edge / API Gateway (Єдина точка входу та балансувальник навантаження)
   api-gateway:
     image: nginx:alpine
     container_name: biolims-api-gateway
